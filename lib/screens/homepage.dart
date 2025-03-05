@@ -36,7 +36,6 @@ class _HomePageState extends State<HomePage> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-           
             const Text(
               'Gemini Chat',
               style: TextStyle(
@@ -48,9 +47,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: Container(
-        decoration: const BoxDecoration(
-          color: Color.fromRGBO(27, 27, 27, 1),
-        ),
+        decoration: const BoxDecoration(color: Color.fromRGBO(27, 27, 27, 1)),
         child: DashChat(
           currentUser: currentUser,
           onSend: sendMessage,
@@ -102,9 +99,10 @@ class _HomePageState extends State<HomePage> {
             messageDecorationBuilder: (message, previousMessage, nextMessage) {
               bool isUser = message.user.id == currentUser.id;
               return BoxDecoration(
-                color: isUser
-                    ? const Color.fromRGBO(90, 216, 255, 1)
-                    : const Color.fromRGBO(34, 38, 41, 1),
+                color:
+                    isUser
+                        ? const Color.fromRGBO(90, 216, 255, 1)
+                        : const Color.fromRGBO(34, 38, 41, 1),
                 borderRadius: BorderRadius.circular(16),
               );
             },
@@ -145,14 +143,14 @@ class _HomePageState extends State<HomePage> {
               horizontal: 12,
               vertical: 8,
             ),
-          //   currentUserContainerPadding: const EdgeInsets.only(
-          //     left: 48,
-          //     right: 8,
-          //   ),
-          //   otherUserContainerPadding: const EdgeInsets.only(
-          //     left: 8,
-          //     right: 48,
-          //   ),
+              // currentUserContainerPadding: const EdgeInsets.only(
+              //   left: 48,
+              //   right: 8,
+              // ),
+              // otherUserContainerPadding: const EdgeInsets.only(
+              //   left: 8,
+              //   right: 48,
+              // ),
           ),
         ),
       ),
@@ -174,7 +172,8 @@ class _HomePageState extends State<HomePage> {
 
       gemini.streamGenerateContent(question, images: images).listen((event) {
         // Extract text properly
-        String response = event.content?.parts
+        String response =
+            event.content?.parts
                 ?.map((part) {
                   if (part is TextPart) return part.text;
                   return ""; // Handle non-text parts gracefully
