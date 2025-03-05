@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Gemini Chat')),
+      appBar: AppBar(title: Center(child: const Text('Gemini Chat'))),
       body: DashChat(
         inputOptions: InputOptions(
           trailing: [

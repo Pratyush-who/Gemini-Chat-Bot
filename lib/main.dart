@@ -5,11 +5,16 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(); // Load environment variables
-  Gemini.init(apiKey: dotenv.env['GEMINI_API_KEY']!);
+  try {
+    await dotenv.load(fileName: ".env"); // Load the .env file
+  } catch (e) {
+    print("Error loading .env file: $e");
+  }
+
+  Gemini.init(apiKey: dotenv.env['GEMINI_API_KEY']!); // Use the API key
+
   runApp(const MainApp());
 }
-
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
